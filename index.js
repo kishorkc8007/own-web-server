@@ -1,7 +1,14 @@
 const http = require("http");
 
 const server = http.createServer((req,res)=>{
-    res.end("We can create our own web server using node js");
+    if(req.url == "/"){
+        res.end("I am using node js");
+    }else if(req.url=="/home"){
+        res.end("This is my home page");
+    }else{
+        res.writeHead(404,{"context-type": "text/html"});
+        res.end("<h1>404 Error</h1>");
+    }
 });
 
 
